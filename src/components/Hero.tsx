@@ -1,3 +1,5 @@
+import heroVideo from '../assets/video/carezza-hero.mp4'
+
 export function Hero() {
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -11,7 +13,7 @@ export function Hero() {
           poster="/src/assets/video/poster-hero.jpg"
           className="w-full h-full object-cover opacity-90 transition-opacity duration-1000"
         >
-          <source src="/src/assets/video/carezza-hero.mp4" type="video/mp4" />
+          <source src={heroVideo} type="video/mp4" />
         </video>
         
         <div className="absolute inset-0 bg-black/60 mix-blend-multiply pointer-events-none"></div>
