@@ -1,73 +1,26 @@
-# React + TypeScript + Vite
+# 🌿 Carezza Perfumes | Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-Currently, two official plugins are available:
+Uma landing page premium e de alta conversão desenvolvida para a **Carezza Perfumes**, uma boutique de alta perfumaria focada em curadoria internacional e decantes. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O projeto foi construído com foco em **Clean Beauty** e **Luxo**, utilizando técnicas avançadas de interface como Glassmorphism, Micro-interações, vídeos nativos em loop (Cinemagraphs) e uma paleta de cores terrosa e orgânica.
 
-## React Compiler
+## ✨ Destaques e Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Design System Customizado:** Paleta de cores exclusiva (Sage, Gold, Cream) configurada no Tailwind para consistência visual.
+- **Glassmorphism:** Efeitos de vidro translúcido nos cartões de catálogo e botões.
+- **Header Dinâmico:** Barra de navegação que reage ao scroll (transparente no topo, sólida com blur durante a leitura).
+- **Cinemagraphs:** Vídeos HTML5 otimizados e em loop para criar uma experiência sensorial de perfumaria na secção *Sobre Nós* e no *Hero*.
+- **Botão Flutuante Inteligente (WhatsApp):** Utilização de duplo contraste (Técnica do Eclipse) para garantir que o CTA principal nunca se perca, independente da cor de fundo da secção.
+- **Totalmente Responsivo:** Experiência fluida garantida do Mobile ao Desktop.
 
-## Expanding the ESLint configuration
+## 🛠 Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **[React](https://reactjs.org/)** com **[Vite](https://vitejs.dev/)** para carregamento rápido e HMR.
+- **[Tailwind CSS](https://tailwindcss.com/)** para estilização utilitária e responsividade.
+- **[React Icons](https://react-icons.github.io/react-icons/)** para os logos de marcas oficiais (WhatsApp, Instagram).
+- **[TypeScript](https://www.typescriptlang.org/)** para tipagem estática e maior segurança no código.
