@@ -4,12 +4,12 @@ import { FaSearch } from 'react-icons/fa'
 import logo from '../assets/logo.svg'
 
 export function Header() {
+  const location = useLocation()
+  const isCatalogRoute = location.pathname === '/catalogo'
+
   const [isScrolled, setIsScrolled] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const lastScrollY = useRef(0)
-  
-  const location = useLocation()
-  const isCatalogRoute = location.pathname === '/catalogo'
 
   const [searchParams, setSearchParams] = useSearchParams()
   const searchQuery = searchParams.get('q') || ''
@@ -27,20 +27,32 @@ export function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      const threshold = window.innerHeight - 100
-      setIsScrolled(currentScrollY > threshold)
+      const catalogoElement = document.getElementById('catalogo')
+      const catalogThreshold = catalogoElement
+        ? catalogoElement.offsetTop - 100
+        : window.innerHeight - 100
 
-      if (currentScrollY < 10) {
+      setIsScrolled(currentScrollY > catalogThreshold)
+
+      if (currentScrollY < 100) {
         setIsVisible(true)
+      } else if (currentScrollY < catalogThreshold) {
+        setIsVisible(false)
       } else {
-        if (currentScrollY > lastScrollY.current) {
-          setIsVisible(false)
-        } else {
-          setIsVisible(true)
-        }
+        setIsVisible(currentScrollY < lastScrollY.current)
       }
+
       lastScrollY.current = currentScrollY
     }
+
+    if (isCatalogRoute) {
+      setIsScrolled(true)
+      setIsVisible(true)
+      return
+    }
+
+    lastScrollY.current = window.scrollY
+    handleScroll()
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -56,16 +68,22 @@ export function Header() {
   const headerStyles = isCatalogRoute
     ? 'bg-white/5 backdrop-blur-2xl border-b border-white/5 text-cream py-3 md:py-4'
     : isScrolled
-      ? 'bg-cream/95 backdrop-blur-md text-sage-deep py-3 shadow-sm' // <-- Ajustado para text-sage-deep para combinar perfeitamente
+      ? 'bg-cream/95 backdrop-blur-md text-sage-deep py-3 shadow-sm'
       : 'bg-transparent text-cream py-5'
+
+  const ctaButtonStyles = isCatalogRoute
+    ? 'bg-gold border border-gold text-white shadow-md hover:shadow-lg hover:shadow-gold/30'
+    : isScrolled
+      ? 'bg-sage-deep border border-sage-deep text-white shadow-md hover:shadow-lg hover:shadow-sage-deep/30'
+      : 'bg-gradient-to-br from-white/20 to-white/5 border border-white/20 text-white hover:from-gold/20 hover:to-gold/5 hover:border-gold hover:text-gold'
 
   return (
     <header className={`fixed top-0 w-full z-50 px-4 md:px-6 transition-all duration-500 ease-in-out transform-gpu ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     } ${headerStyles}`}>
-      
+
       <div className="flex items-center justify-between w-full gap-3 md:gap-6">
-        
+
         <div className="w-12 md:w-24 flex-shrink-0 transition-transform duration-500 hover:scale-105 cursor-pointer">
           <Link to="/" onClick={handleLogoClick} className="active:opacity-50 transition-opacity duration-300 block">
             <img
@@ -103,11 +121,8 @@ export function Header() {
 
         <div className="hidden md:block flex-shrink-0">
           <button className={`
-            px-7 py-2.5 rounded-full transition-all duration-300 uppercase tracking-widest text-xs font-semibold active:scale-95
-            ${isCatalogRoute || !isScrolled
-              ? 'bg-gradient-to-br from-white/20 to-white/5 border border-white/20 text-white hover:from-gold/20 hover:to-gold/5 hover:border-gold hover:text-gold'
-              : 'bg-sage-deep text-white shadow-md hover:brightness-110 hover:shadow-lg hover:shadow-sage-deep/30 hover:-translate-y-0.5'
-            }
+            px-7 py-2.5 rounded-full transition-all duration-300 uppercase tracking-widest text-xs font-semibold active:scale-95 hover:brightness-110 hover:-translate-y-0.5
+            ${ctaButtonStyles}
           `}>
             Falar com Consultor
           </button>
