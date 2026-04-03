@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom'
 import decantesImg from '../assets/images/Decantes.jpg'
 
 export function Decants() {
+  const navigate = useNavigate()
   return (
     <section id="decantes" className="py-12 md:py-16 bg-gold relative z-20 overflow-hidden">
       <div className="container mx-auto px-6">
@@ -19,8 +21,11 @@ export function Decants() {
               Não tem certeza de qual fragrância escolher? Explore o mundo da alta perfumaria através dos nossos decants. Frações originais de 5ml e 10ml, perfeitas para você testar na pele antes de investir no frasco completo.
             </p>
             
-            <button className="bg-white text-gold px-10 py-5 rounded-full transition-all duration-300 font-semibold tracking-widest uppercase text-xs active:scale-95 hover:bg-white hover:shadow-xl hover:shadow-white/40 hover:-translate-y-0.5">
-              Montar meu Kit Descoberta
+            <button
+              onClick={() => navigate('/catalogo?filtro=Decants')}
+              className="bg-white text-gold px-10 py-5 rounded-full transition-all duration-300 font-semibold tracking-widest uppercase text-xs active:scale-95 hover:bg-white hover:shadow-xl hover:shadow-white/40 hover:-translate-y-0.5"
+            >
+              Ver Decants
             </button>
           </div>
 

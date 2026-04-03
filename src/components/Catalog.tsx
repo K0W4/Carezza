@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import internacionalImg from '../assets/images/Internacional.jpg'
 import arabeImg from '../assets/images/Arabe.jpg'
 import nacionalImg from '../assets/images/Nacional.png'
@@ -9,6 +10,7 @@ const categorias = [
 ]
 
 export function Catalog() {
+  const navigate = useNavigate()
   return (
     <section id="catalogo" className="py-12 md:py-16 bg-sage relative z-20">
       <div className="container mx-auto px-6">
@@ -37,9 +39,12 @@ export function Catalog() {
               </div>
               
               <div className="text-center px-2 pb-2">
-                <a href="#" className="inline-block p-3 -m-3 uppercase tracking-widest text-xs font-semibold text-cream transition-all duration-300 hover:text-gold active:opacity-50">
+                <button
+                  onClick={() => navigate('/catalogo?filtro=' + categoria.name)}
+                  className="inline-block p-3 -m-3 uppercase tracking-widest text-xs font-semibold text-cream transition-all duration-300 hover:text-gold active:opacity-50"
+                >
                   Ver Coleção
-                </a>
+                </button>
               </div>
             </div>
           ))}
