@@ -1,3 +1,8 @@
+import arabeImg from '../assets/images/Arabe.jpg';
+import internacionalImg from '../assets/images/Internacional.jpg';
+import nacionalImg from '../assets/images/Nacional.png';
+import decantesImg from '../assets/images/Decantes.jpg';
+
 export type Frasco = 'Perfume Completo' | 'Decant 10ml' | 'Decant 5ml';
 export type Origem = 'Importado' | 'Árabe' | 'Nacional';
 export type Marca = 'Victoria\'s Secret' | 'La Rive' | 'Lattafa' | 'Natura' | 'O Boticário' | 'Avon' | 'O.U.i' | 'Eudora' | 'Quem Disse, Berenice?';
@@ -21,7 +26,7 @@ export const produtosCatalogo: Produto[] = [
     origem: "Árabe",
     frascosDisponiveis: ["Perfume Completo", "Decant 5ml", "Decant 10ml"],
     mls: "100ml",
-    imagemUrl: "/src/assets/images/Arabe.jpg",
+    imagemUrl: arabeImg, 
     notasPrincipais: ["Manga", "Coco", "Maracujá"]
   },
   {
@@ -31,7 +36,7 @@ export const produtosCatalogo: Produto[] = [
     origem: "Importado",
     frascosDisponiveis: ["Perfume Completo"],
     mls: "90ml",
-    imagemUrl: "/src/assets/images/Internacional.jpg",
+    imagemUrl: internacionalImg, 
     notasPrincipais: ["Limão Siciliano", "Jasmim", "Madeira de Cedro"]
   },
   {
@@ -41,7 +46,7 @@ export const produtosCatalogo: Produto[] = [
     origem: "Nacional",
     frascosDisponiveis: ["Perfume Completo", "Decant 5ml"],
     mls: "75ml",
-    imagemUrl: "/src/assets/images/Nacional.png",
+    imagemUrl: nacionalImg,
     notasPrincipais: ["Lírio", "Mandarina", "Sândalo"]
   },
   {
@@ -51,7 +56,7 @@ export const produtosCatalogo: Produto[] = [
     origem: "Importado",
     frascosDisponiveis: ["Decant 10ml"],
     mls: "250ml",
-    imagemUrl: "/src/assets/images/Decantes.jpg",
+    imagemUrl: decantesImg, 
     notasPrincipais: ["Baunilha Batida", "Caxemira Suave", "Flor de Maçã"]
   }
 ];
