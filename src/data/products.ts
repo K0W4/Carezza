@@ -26,7 +26,7 @@ export const produtosCatalogo: Produto[] = [
     origem: "Árabe",
     frascosDisponiveis: ["Perfume Completo", "Decant 5ml", "Decant 10ml"],
     mls: "100ml",
-    imagemUrl: arabeImg, 
+    imagemUrl: arabeImg,
     notasPrincipais: ["Manga", "Coco", "Maracujá"]
   },
   {
