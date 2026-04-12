@@ -18,13 +18,13 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-5 mb-6">
-            <a href="#" className="w-9 h-9 rounded-full border border-cream/30 flex items-center justify-center text-cream/80 transition-all duration-300 hover:bg-cream hover:text-sage-deep active:opacity-50 hover:border-cream">
+            <a href="https://instagram.com/carezz.a" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Carezza" className="w-9 h-9 rounded-full border border-cream/30 flex items-center justify-center text-cream/80 transition-all duration-300 hover:bg-cream hover:text-sage-deep active:opacity-50 hover:border-cream">
               <FaInstagram className="w-3.5 h-3.5" />
             </a>
-            <a href="#" className="w-9 h-9 rounded-full border border-cream/30 flex items-center justify-center text-cream/80 transition-all duration-300 hover:bg-cream hover:text-sage-deep active:opacity-50 hover:border-cream">
+            <a href="#" aria-label="WhatsApp da Carezza" className="w-9 h-9 rounded-full border border-cream/30 flex items-center justify-center text-cream/80 transition-all duration-300 hover:bg-cream hover:text-sage-deep active:opacity-50 hover:border-cream">
               <FaWhatsapp className="w-3.5 h-3.5" />
             </a>
-            <a href="#" className="w-9 h-9 rounded-full border border-cream/30 flex items-center justify-center text-cream/80 transition-all duration-300 hover:bg-cream hover:text-sage-deep active:opacity-50 hover:border-cream">
+            <a href="mailto:carezza.financeiro@gmail.com" aria-label="Email da Carezza" className="w-9 h-9 rounded-full border border-cream/30 flex items-center justify-center text-cream/80 transition-all duration-300 hover:bg-cream hover:text-sage-deep active:opacity-50 hover:border-cream">
               <FaEnvelope className="w-3.5 h-3.5" />
             </a>
           </div>

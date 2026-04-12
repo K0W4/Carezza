@@ -1,10 +1,9 @@
-
 interface CatalogFilterProps {
   activeFilter: string;
   setActiveFilter: (filter: string) => void;
 }
 
-export const categoriasFiltro = ['Todos', 'Importados', 'Árabes', 'Nacionais', 'Decants'];
+export const categoriasFiltro = ['Todos', 'Importados', 'Árabes', 'Decants'];
 
 export function CatalogFilter({ activeFilter, setActiveFilter }: CatalogFilterProps) {
   return (

@@ -1,11 +1,10 @@
 import arabeImg from '../assets/images/Arabe.jpg';
 import internacionalImg from '../assets/images/Internacional.jpg';
-import nacionalImg from '../assets/images/Nacional.png';
 import decantesImg from '../assets/images/Decantes.jpg';
 
-export type Frasco = 'Perfume Completo' | 'Decant 10ml' | 'Decant 5ml';
-export type Origem = 'Importado' | 'Árabe' | 'Nacional';
-export type Marca = 'Victoria\'s Secret' | 'La Rive' | 'Lattafa' | 'Natura' | 'O Boticário' | 'Avon' | 'O.U.i' | 'Eudora' | 'Quem Disse, Berenice?';
+export type Frasco = 'Perfume Completo' | 'Decant 10ml';
+export type Origem = 'Importado' | 'Árabe';
+export type Marca = 'Victoria\'s Secret' | 'La Rive' | 'Lattafa' | 'O.U.i';
 
 export interface Produto {
   id: string;
@@ -24,7 +23,7 @@ export const produtosCatalogo: Produto[] = [
     nome: "Yara Tous",
     marca: "Lattafa",
     origem: "Árabe",
-    frascosDisponiveis: ["Perfume Completo", "Decant 5ml", "Decant 10ml"],
+    frascosDisponiveis: ["Perfume Completo", "Decant 10ml"],
     mls: "100ml",
     imagemUrl: arabeImg,
     notasPrincipais: ["Manga", "Coco", "Maracujá"]
@@ -38,16 +37,6 @@ export const produtosCatalogo: Produto[] = [
     mls: "90ml",
     imagemUrl: internacionalImg, 
     notasPrincipais: ["Limão Siciliano", "Jasmim", "Madeira de Cedro"]
-  },
-  {
-    id: "p3",
-    nome: "Lily Eau de Parfum",
-    marca: "O Boticário",
-    origem: "Nacional",
-    frascosDisponiveis: ["Perfume Completo", "Decant 5ml"],
-    mls: "75ml",
-    imagemUrl: nacionalImg,
-    notasPrincipais: ["Lírio", "Mandarina", "Sândalo"]
   },
   {
     id: "p4",

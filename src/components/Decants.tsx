@@ -18,7 +18,7 @@ export function Decants() {
             </h2>
             
             <p className="text-base md:text-lg lg:text-xl text-white/90 font-normal leading-relaxed mb-10 max-w-lg text-justify md:text-left">
-              Não tem certeza de qual fragrância escolher? Explore o mundo da alta perfumaria através dos nossos decants. Frações originais de 5ml e 10ml, perfeitas para você testar na pele antes de investir no frasco completo.
+              Não tem certeza de qual fragrância escolher? Explore o mundo da alta perfumaria através dos nossos decants. Frações originais de 10ml, perfeitas para você testar na pele antes de investir no frasco completo.
             </p>
             
             <button

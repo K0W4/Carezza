@@ -14,7 +14,8 @@ export function CatalogPage() {
   const queryFromUrl = searchParams.get('q') || '';
   
   const rawFilter = searchParams.get('filtro');
-  const activeFilter = (rawFilter && ['Importados', 'Nacionais', 'Decants', 'Árabes'].includes(rawFilter)) 
+  // Nacionais removido da lista segura
+  const activeFilter = (rawFilter && ['Importados', 'Decants', 'Árabes'].includes(rawFilter)) 
     ? rawFilter 
     : 'Todos';
 
@@ -44,8 +45,8 @@ export function CatalogPage() {
     if (activeFilter !== 'Todos') {
       if (activeFilter === 'Decants') matchesCategory = produto.frascosDisponiveis.some(f => f.includes('Decant'));
       else if (activeFilter === 'Importados') matchesCategory = produto.origem === 'Importado';
-      else if (activeFilter === 'Nacionais') matchesCategory = produto.origem === 'Nacional';
       else if (activeFilter === 'Árabes') matchesCategory = produto.origem === 'Árabe';
+      // Removida condição dos Nacionais
     }
     let matchesSearch = true;
     if (debouncedQuery.trim() !== '') {
