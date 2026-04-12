@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CatalogFilter } from '../components/CatalogFilter';
+import { CatalogFilter, categoriasFiltro } from '../components/CatalogFilter';
 import { produtosCatalogo } from '../data/products';
 
 const WHATSAPP_NUMBER = '5500000000000';
@@ -9,14 +9,13 @@ const WHATSAPP_NUMBER = '5500000000000';
 export function CatalogPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const [searchParams, setSearchParams] = useSearchParams();
   const queryFromUrl = searchParams.get('q') || '';
-  
+
   const rawFilter = searchParams.get('filtro');
-  // Nacionais removido da lista segura
-  const activeFilter = (rawFilter && ['Importados', 'Decants', 'Árabes'].includes(rawFilter)) 
-    ? rawFilter 
+  const activeFilter = (rawFilter && categoriasFiltro.includes(rawFilter))
+    ? rawFilter
     : 'Todos';
 
   const [debouncedQuery, setDebouncedQuery] = useState(queryFromUrl);
@@ -24,7 +23,7 @@ export function CatalogPage() {
   const handleFilterChange = (newFilter: string) => {
     const newParams = new URLSearchParams(searchParams);
     if (newFilter === 'Todos') {
-      newParams.delete('filtro'); 
+      newParams.delete('filtro');
     } else {
       newParams.set('filtro', newFilter);
     }
@@ -43,15 +42,13 @@ export function CatalogPage() {
   const filteredProducts = produtosCatalogo.filter((produto) => {
     let matchesCategory = true;
     if (activeFilter !== 'Todos') {
-      if (activeFilter === 'Decants') matchesCategory = produto.frascosDisponiveis.some(f => f.includes('Decant'));
-      else if (activeFilter === 'Importados') matchesCategory = produto.origem === 'Importado';
-      else if (activeFilter === 'Árabes') matchesCategory = produto.origem === 'Árabe';
-      // Removida condição dos Nacionais
+      matchesCategory = produto.categoria === activeFilter;
     }
+
     let matchesSearch = true;
     if (debouncedQuery.trim() !== '') {
       const query = debouncedQuery.toLowerCase();
-      const searchTarget = `${produto.nome} ${produto.marca} ${produto.notasPrincipais.join(' ')}`.toLowerCase();
+      const searchTarget = `${produto.nome} ${produto.marca} ${produto.detalhes.join(' ')}`.toLowerCase();
       matchesSearch = searchTarget.includes(query);
     }
     return matchesCategory && matchesSearch;
@@ -88,7 +85,7 @@ export function CatalogPage() {
         >
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((produto) => {
-              const mensagem = `Olá! Gostaria de consultar a disponibilidade do perfume ${produto.nome} (${produto.marca}).`;
+              const mensagem = `Olá! Gostaria de consultar a disponibilidade do item ${produto.nome} (${produto.marca}).`;
               const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
 
               return (
@@ -109,33 +106,35 @@ export function CatalogPage() {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
                     />
                     <div className="absolute top-4 left-4 bg-sage-deep/80 backdrop-blur-md border border-white/20 text-cream text-[9px] uppercase tracking-widest px-3 py-1 rounded-full">
-                      {produto.origem}
+                      {produto.categoria}
                     </div>
                   </div>
 
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-gold text-[10px] uppercase tracking-widest">{produto.marca}</span>
-                      <span className="text-cream/50 text-[10px] uppercase tracking-widest">{produto.mls}</span>
+                      {produto.tamanho && (
+                        <span className="text-cream/50 text-[10px] uppercase tracking-widest">{produto.tamanho}</span>
+                      )}
                     </div>
 
                     <h4 className="text-2xl font-serif text-cream mb-4">{produto.nome}</h4>
 
                     <div className="mb-6 space-y-2">
-                      <span className="text-[9px] text-cream/40 uppercase tracking-widest block">Notas Principais:</span>
+                      <span className="text-[9px] text-cream/40 uppercase tracking-widest block">Detalhes:</span>
                       <p className="text-cream/80 text-xs italic font-serif leading-relaxed">
-                        {produto.notasPrincipais.join(' • ')}
+                        {produto.detalhes.join(' • ')}
                       </p>
                     </div>
 
                     <div className="mt-auto space-y-4">
                       <div className="flex flex-wrap gap-2">
-                        {produto.frascosDisponiveis.map(frasco => (
+                        {produto.opcoesDisponiveis.map(opcao => (
                           <span
-                            key={frasco}
+                            key={opcao}
                             className="text-[9px] uppercase tracking-wider text-cream/80 bg-white/5 px-2 py-1 rounded-md border border-white/10"
                           >
-                            {frasco}
+                            {opcao}
                           </span>
                         ))}
                       </div>
@@ -165,10 +164,10 @@ export function CatalogPage() {
                 className="absolute inset-x-0 top-10 text-center py-20"
               >
                 <p className="text-cream/50 text-lg font-serif italic mb-2">
-                  Nenhuma fragrância encontrada.
+                  Nenhum item encontrado nesta categoria.
                 </p>
                 <p className="text-cream/30 text-sm">
-                  Tente pesquisar por outras notas ou limpe o filtro atual.
+                  Tente pesquisar por outros detalhes ou limpe o filtro atual.
                 </p>
               </motion.div>
             )}

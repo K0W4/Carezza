@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import decantesImg from '../assets/images/Decantes.jpg'
 
 export function Decants() {
   const navigate = useNavigate()
@@ -31,7 +30,7 @@ export function Decants() {
 
           <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <div className="relative aspect-[3/4] w-full max-w-sm lg:max-w-md bg-white/20 rounded-2xl md:rounded-[2rem] flex items-center justify-center overflow-hidden transition-transform duration-700">
-              <img src={decantesImg} alt="Kit Descoberta em Decantes" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+              <img src="/images/Decants.jpg" alt="Kit Descoberta em Decantes" className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
             </div>
           </div>
 

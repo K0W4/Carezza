@@ -1,20 +1,14 @@
-import arabeImg from '../assets/images/Arabe.jpg';
-import internacionalImg from '../assets/images/Internacional.jpg';
-import decantesImg from '../assets/images/Decantes.jpg';
-
-export type Frasco = 'Perfume Completo' | 'Decant 10ml';
-export type Origem = 'Importado' | 'Árabe';
-export type Marca = 'Victoria\'s Secret' | 'La Rive' | 'Lattafa' | 'O.U.i';
+export type Categoria = 'Perfumaria' | 'Corpo & Banho' | 'Maquiagem' | 'Kits' | 'Acessórios';
 
 export interface Produto {
   id: string;
   nome: string;
-  marca: Marca;
-  origem: Origem;
-  frascosDisponiveis: Frasco[];
-  mls: string;
+  marca: string;
+  categoria: Categoria;
+  opcoesDisponiveis: string[];
+  tamanho?: string;
   imagemUrl: string;
-  notasPrincipais: string[];
+  detalhes: string[];
 }
 
 export const produtosCatalogo: Produto[] = [
@@ -22,30 +16,39 @@ export const produtosCatalogo: Produto[] = [
     id: "p1",
     nome: "Yara Tous",
     marca: "Lattafa",
-    origem: "Árabe",
-    frascosDisponiveis: ["Perfume Completo", "Decant 10ml"],
-    mls: "100ml",
-    imagemUrl: arabeImg,
-    notasPrincipais: ["Manga", "Coco", "Maracujá"]
+    categoria: "Perfumaria",
+    opcoesDisponiveis: ["Perfume Completo", "Decant 10ml"],
+    tamanho: "100ml",
+    imagemUrl: "/images/Perfumes.png",
+    detalhes: ["Manga", "Coco", "Maracujá"]
   },
   {
     id: "p2",
-    nome: "Donna",
-    marca: "La Rive",
-    origem: "Importado",
-    frascosDisponiveis: ["Perfume Completo"],
-    mls: "90ml",
-    imagemUrl: internacionalImg, 
-    notasPrincipais: ["Limão Siciliano", "Jasmim", "Madeira de Cedro"]
+    nome: "Creme Acetinado Lily",
+    marca: "O Boticário",
+    categoria: "Corpo & Banho",
+    opcoesDisponiveis: ["Tamanho Único"],
+    tamanho: "250g",
+    imagemUrl: "/images/Cuidado&Banho.jpg",
+    detalhes: ["Toque Acetinado", "Fragrância Intensa", "Hidratação Prolongada"]
+  },
+  {
+    id: "p3",
+    nome: "Kit Tododia Algodão",
+    marca: "Natura",
+    categoria: "Kits",
+    opcoesDisponiveis: ["Kit Completo"],
+    imagemUrl: "/images/Kits.jpg",
+    detalhes: ["Hidratante 400ml", "Body Splash 200ml", "Sabonete em Barra"]
   },
   {
     id: "p4",
-    nome: "Bare Vanilla",
-    marca: "Victoria's Secret",
-    origem: "Importado",
-    frascosDisponiveis: ["Decant 10ml"],
-    mls: "250ml",
-    imagemUrl: decantesImg, 
-    notasPrincipais: ["Baunilha Batida", "Caxemira Suave", "Flor de Maçã"]
+    nome: "Batom Ultra Matte Amora",
+    marca: "Avon",
+    categoria: "Maquiagem",
+    opcoesDisponiveis: ["Tamanho Único"],
+    tamanho: "3.6g",
+    imagemUrl: "/images/Maquiagem.jpg",
+    detalhes: ["Acabamento Matte Real", "Alta Cobertura", "Não resseca os lábios"]
   }
 ];
